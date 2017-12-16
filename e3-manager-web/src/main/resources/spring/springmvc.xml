@@ -12,6 +12,9 @@
 
 	<context:component-scan base-package="cn.e3mall.controller" />
 	<mvc:annotation-driven />
+	<!-- 资源映射配置 -->	
+	<mvc:resources location="/css/" mapping="/css/**"/>
+	<mvc:resources location="/js/" mapping="/js/**"/>
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/" />
