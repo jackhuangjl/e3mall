@@ -9,7 +9,8 @@ public class PageController {
 	
 	@RequestMapping("/")
 	public String showIndex() {
-		return "indexs";
+		System.out.println("test");
+		return "index";
 	}
 	
 	@RequestMapping("/{page}")
