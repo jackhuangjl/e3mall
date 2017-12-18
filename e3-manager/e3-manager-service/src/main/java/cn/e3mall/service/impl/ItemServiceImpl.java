@@ -5,6 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+
+import cn.e3mall.common.pojo.EasyUIDataGridResult;
 import cn.e3mall.mapper.TbItemMapper;
 import cn.e3mall.pojo.TbItem;
 import cn.e3mall.pojo.TbItemExample;
@@ -33,6 +37,24 @@ public class ItemServiceImpl implements ItemService {
 		if(list != null)
 			return list.get(0);
 		return null;
+	}
+	@Override
+	public EasyUIDataGridResult getItemList(int page, int rows) {
+		//创建pojo对象
+		EasyUIDataGridResult easyUIDataGridResult = new EasyUIDataGridResult();
+		//设置查询条件 因为这个插件已经在SqlMapConfig.xml 配置进去了
+		//也就是在执行sql语句前必须先配置好条件 在这里使用了ibatis的切面技术 也就是在配置好了这个插件之后每次执行
+		//sql语句都会先执行插件的设置对sql语句进行修改后再执行
+		PageHelper.startPage(page, rows);
+		//创建查询对象
+		TbItemExample example = new TbItemExample();
+		List<TbItem> list = itemMapper.selectByExample(example);
+		//把查询到的所有的内容放入对象
+		easyUIDataGridResult.setRows(list);
+		//创建pagehelper信息对象，然后把查询到的所有数据传入该对象 然后按照设置的参数进行分页参数的计算和保存
+		PageInfo pageInfo = new PageInfo(list);
+		easyUIDataGridResult.setTotal(pageInfo.getTotal());
+		return easyUIDataGridResult;
 	}
 
 }
