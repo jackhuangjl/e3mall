@@ -3,7 +3,6 @@ package cn.pagehelper;
 import java.util.List;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -17,16 +16,16 @@ import cn.e3mall.pojo.TbItemExample;
 public class PageHelperTest {
 	@Test
 	public void testPageHelper(){
-		//³õÊ¼»¯springÈİÆ÷
+		//åˆå§‹åŒ–springå®¹å™¨
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-dao.xml");
-		//»ñÈ¡Mapper´úÀí¶ÔÏó
+		//è·å–Mapperä»£ç†å¯¹è±¡
 		TbItemMapper itemMapper = applicationContext.getBean(TbItemMapper.class);
-		//Ö´ĞĞsqlÓï¾äÖ®Ç°ÉèÖÃ·ÖÒ³ĞÅÏ¢Ê¹ÓÃPageHelperµÄstartPage·½·¨
+		//æ‰§è¡Œsqlè¯­å¥ä¹‹å‰è®¾ç½®åˆ†é¡µä¿¡æ¯ä½¿ç”¨PageHelperçš„startPageæ–¹æ³•
 		PageHelper.startPage(1, 10);
-		//Ö´ĞĞ²éÑ¯
+		//æ‰§è¡ŒæŸ¥è¯¢
 		TbItemExample example = new TbItemExample();
 		List<TbItem> list = itemMapper.selectByExample(example);
-		//È¡·ÖÒ³ĞÅÏ¢£¬PageInfo 1¡¢×Ü¼ÇÂ¼Êı 2.×ÜÒ³Êı µ±Ç°Ò³ÂëµÈĞÅÏ¢
+		//å–åˆ†é¡µä¿¡æ¯ï¼ŒPageInfo 1ã€æ€»è®°å½•æ•° 2.æ€»é¡µæ•° å½“å‰é¡µç ç­‰ä¿¡æ¯
 		PageInfo<TbItem> pageInfo = new PageInfo<>(list);
 		System.out.println(pageInfo.getTotal());
 		System.out.println(pageInfo.getPages());
