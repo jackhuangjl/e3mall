@@ -9,15 +9,13 @@
 	<artifactId>e3-manager-web</artifactId>
 	<packaging>war</packaging>
 	<dependencies>
-		<!-- 
-			 因为最后查询的数据库内容返回的list数据  由于使用了pagehelper插件 所以转换成page对象 page对象也是继承arraylist对象
-			  防止报警告所以加入该插件
-		 -->
+		<!-- 因为最后查询的数据库内容返回的list数据 由于使用了pagehelper插件 所以转换成page对象 page对象也是继承arraylist对象 
+			防止报警告所以加入该插件 -->
 		<dependency>
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>cn.e3mall</groupId>
 			<artifactId>e3-manager-interface</artifactId>
@@ -96,6 +94,11 @@
 		<dependency>
 			<groupId>com.github.sgroschupf</groupId>
 			<artifactId>zkclient</artifactId>
+		</dependency>
+		<!-- 文件上传组件 -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
 		</dependency>
 	</dependencies>
 	<build>
