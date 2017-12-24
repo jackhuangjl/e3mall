@@ -3,39 +3,24 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>cn.e3mall</groupId>
-		<artifactId>e3-parent</artifactId>
+		<artifactId>e3-content</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>e3-manager-web</artifactId>
+	<artifactId>e3-content-service</artifactId>
 	<packaging>war</packaging>
 	<dependencies>
-		<!-- 因为最后查询的数据库内容返回的list数据 由于使用了pagehelper插件 所以转换成page对象 page对象也是继承arraylist对象 
-			防止报警告所以加入该插件 -->
-		<dependency>
-			<groupId>com.github.pagehelper</groupId>
-			<artifactId>pagehelper</artifactId>
-		</dependency>
-
 		<dependency>
 			<groupId>cn.e3mall</groupId>
-			<artifactId>e3-manager-interface</artifactId>
+			<artifactId>e3-manager-dao</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		<!-- JSP相关 -->
 		<dependency>
-			<groupId>jstl</groupId>
-			<artifactId>jstl</artifactId>
+			<groupId>cn.e3mall</groupId>
+			<artifactId>e3-content-interface</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jsp-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
+		<!-- spring的依赖 -->
+		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -95,30 +80,5 @@
 			<groupId>com.github.sgroschupf</groupId>
 			<artifactId>zkclient</artifactId>
 		</dependency>
-		<!-- 文件上传组件 -->
-		<dependency>
-			<groupId>commons-fileupload</groupId>
-			<artifactId>commons-fileupload</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>cn.e3mall</groupId>
-			<artifactId>e3-content-interface</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 	</dependencies>
-	<build>
-		<pluginManagement>
-			<plugins>
-				<!-- 配置Tomcat插件 -->
-				<plugin>
-					<groupId>org.apache.tomcat.maven</groupId>
-					<artifactId>tomcat7-maven-plugin</artifactId>
-					<configuration>
-						<path>/</path>
-						<port>8082</port>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
 </project>
