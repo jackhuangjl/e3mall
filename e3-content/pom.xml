@@ -10,6 +10,13 @@
 	<artifactId>e3-content</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
+	<dependencies>
+		<dependency>
+			<groupId>cn.e3mall</groupId>
+			<artifactId>e3-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
 	<modules>
 		<module>e3-content-interface</module>
 		<module>e3-content-service</module>

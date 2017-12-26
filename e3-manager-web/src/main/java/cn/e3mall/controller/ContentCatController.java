@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.e3mall.common.pojo.EasyUITreeNode;
+import cn.e3mall.common.utils.E3Result;
 import cn.e3mall.content.service.ContentCategoryService;
+import cn.e3mall.pojo.TbContentCategory;
 
 @Controller
 public class ContentCatController {
@@ -22,5 +24,13 @@ public class ContentCatController {
 			@RequestParam(name="id", defaultValue="0")Long parentId) {
 		List<EasyUITreeNode> list = categoryService.getContentCatList(parentId);
 		return list;
+	}
+	
+	@RequestMapping("/content/category/create")
+	@ResponseBody
+	public E3Result createContentCategory(long parentId, String name){
+		
+		E3Result e3Result = categoryService.contentCategoryService(parentId, name);
+		return e3Result;
 	}
 }

@@ -33,9 +33,10 @@
 	
 	<!-- 引用dubbo服务 -->
 	<dubbo:application name="e3-manager-web" />
-	<dubbo:registry protocol="zookeeper" address="192.168.229.2:2182" />
+	<dubbo:registry protocol="zookeeper" address="192.168.229.5:2182" />
 	<dubbo:reference interface="cn.e3mall.service.ItemService" id="itemService" />
 	<dubbo:reference interface="cn.e3mall.service.ItemCatService" id="itemCatService" />
-	<!-- 内容分类服务 -->
+	<!-- 内容分类服务 feilei-->
 	<dubbo:reference interface="cn.e3mall.content.service.ContentCategoryService" id="contentCategoryService" />
+	<dubbo:reference interface="cn.e3mall.content.service.ContentService" id="contentService" />
 </beans>

@@ -22,7 +22,7 @@ public class IndexController {
 		
 	@RequestMapping("/index")
 	public String showIndex(Model model) {
-
+		
 		return "index";
 	}
 }
