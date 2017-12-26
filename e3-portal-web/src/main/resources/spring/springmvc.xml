@@ -11,7 +11,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
 		http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-	<!-- 加载配置文件 -->
+	<!-- 加载配置文件 一个spring容器只会识别一个配置文件 -->
 	<context:property-placeholder location="classpath:conf/resource.properties" />
 
 	<context:component-scan base-package="cn.e3mall.portal.controller" />
@@ -22,9 +22,9 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	<!-- 引用dubbo服务 -->
-<!-- 	<dubbo:application name="e3-portal-web" />
+	<dubbo:application name="e3-portal-web" />
 	<dubbo:registry protocol="zookeeper" address="192.168.229.5:2182" />
 	<dubbo:reference interface="cn.e3mall.content.service.ContentService"
-		id="contentService" /> -->
+		id="contentService" />
 
 </beans>

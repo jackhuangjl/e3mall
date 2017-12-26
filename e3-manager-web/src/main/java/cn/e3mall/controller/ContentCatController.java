@@ -33,4 +33,12 @@ public class ContentCatController {
 		E3Result e3Result = categoryService.contentCategoryService(parentId, name);
 		return e3Result;
 	}
+	
+	@RequestMapping("/content/category/delete")
+	@ResponseBody
+	public E3Result deleteContentCategory(long id){
+		
+		E3Result e3Result = categoryService.deleteContentCategory(id);
+		return e3Result;
+	}
 }
