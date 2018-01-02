@@ -39,4 +39,6 @@
 	<!-- 内容分类服务 feilei-->
 	<dubbo:reference interface="cn.e3mall.content.service.ContentCategoryService" id="contentCategoryService" />
 	<dubbo:reference interface="cn.e3mall.content.service.ContentService" id="contentService" />
+	<!-- 搜索服务 -->
+	<dubbo:reference interface="cn.e3mall.search.service.SearchItemService" id="searchItemService" />
 </beans>
