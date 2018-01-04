@@ -14,6 +14,10 @@
 	
 	<context:component-scan base-package="cn.e3mall.search.controller" />
 	<mvc:annotation-driven />
+	
+	<!-- 配置全局异常类 也就是实现一个切面接口 -->
+	<bean class="cn.e3mall.search.exception.GlobalExceptionResolver"/>
+	
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/" />
