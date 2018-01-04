@@ -32,7 +32,7 @@ public class TestActivemq {
 		Session session = connection.createSession(false,
 				Session.AUTO_ACKNOWLEDGE);
 		// 5 使用Session对象创建一个Destination对象（topic、queue），此处创建一个Queue对象。
-		Queue queue = session.createQueue("test-queue");
+		Queue queue = session.createQueue("spring-queue");
 		// 6 使用Session创建一个生产者producer
 		MessageProducer producer = session.createProducer(queue);
 		// 7 使用session创建一个message对象
