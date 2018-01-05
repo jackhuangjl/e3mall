@@ -85,8 +85,10 @@ public class ItemServiceImpl implements ItemService {
 		itemDesc.setUpdated(new Date());
 		//向商品描述表插入数据
 		itemDescMapper.insert(itemDesc);
+		
+		E3Result e3Result = new E3Result(200,"OK",null,itemId);
 		//返回成功
-		return E3Result.ok();
+		return e3Result;
 	}
 
 }

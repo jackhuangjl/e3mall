@@ -19,8 +19,25 @@ public class E3Result implements Serializable{
 
     // 响应中的数据
     private Object data;
+    
+    //返回生成的UUID
+    private long uuid;
 
-    public static E3Result build(Integer status, String msg, Object data) {
+    public long getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(long uuid) {
+		this.uuid = uuid;
+	}
+	//方便返回UUID
+    public E3Result(Integer status, String msg, Object data,long id) {
+        this.status = status;
+        this.msg = msg;
+        this.data = data;
+        this.uuid = id;
+    }
+	public static E3Result build(Integer status, String msg, Object data) {
         return new E3Result(status, msg, data);
     }
 

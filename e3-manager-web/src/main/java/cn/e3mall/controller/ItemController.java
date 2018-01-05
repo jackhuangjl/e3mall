@@ -1,6 +1,15 @@
 package cn.e3mall.controller;
 
+import javax.annotation.Resource;
+import javax.jms.Destination;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.Session;
+import javax.jms.TextMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +26,14 @@ public class ItemController {
 
 	@Autowired
 	private ItemService itemService;
+	//注入Jms模板接口
+	@Autowired
+	private JmsTemplate JmsTemplate;
+	//注入Destination 因为spring配置文件中有两个bean是基于Destination接口
+	//这两个bean就是queue和topic所以选用resource注解可以指定id来注入
+	@Resource
+	private Destination topicDestination;
+	
 	@RequestMapping("/item/{itemId}")
 	public @ResponseBody TbItem getItemById(@PathVariable Long itemId){
 		TbItem item = itemService.getItemById(itemId);
@@ -34,7 +51,16 @@ public class ItemController {
 	@RequestMapping(value="/item/save", method=RequestMethod.POST)
 	@ResponseBody
 	public E3Result addItem(TbItem item, String desc) {
-		E3Result result = itemService.addItem(item, desc);
+		final E3Result result = itemService.addItem(item, desc);
+		//在这里添加发送activeMQ 是因为 添加完新商品之后 需要等待事物的完成 方便导入新产品到索引库时 不会发生在mysql数据库中找不到对应的商品
+		JmsTemplate.send(topicDestination,new MessageCreator() {		
+			@Override
+			public Message createMessage(Session session) throws JMSException {
+				// TODO Auto-generated method stub
+				TextMessage textMessage = session.createTextMessage(result.getUuid() + "");
+				return textMessage;
+			}
+		});	
 		return result;
 	}
 }

@@ -9,7 +9,7 @@
 	            <td>商品类目:</td>
 	            <td>
 	            	<a href="javascript:void(0)" class="easyui-linkbutton selectItemCat">选择类目</a>
-	            	<input type="hidden" name="cid" style="width: 280px;"></input>
+	            	<input id="cid" type="hidden" name="cid"  style="width: 280px;"></input>
 	            </td>
 	        </tr>
 	        <tr>
